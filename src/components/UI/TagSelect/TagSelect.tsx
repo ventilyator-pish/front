@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 import { Tag } from '@src/utils/api/types/main';
 
 
-interface TagSelectProps { 
+interface TagSelectProps {
   handleTagChange?: any
 }
 
@@ -47,6 +47,9 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange }) => {
     }
     // @ts-ignore
     setChosenTags((prev) => [...prev, tags.find((tag) => tag.id === id)]);
+    if(handleTagChange){
+      handleTagChange([...chosenTags, tags.find((tag) => tag.id === id)])
+    }
     setExcludedIdTags((prev) => [...prev, id]);
   };
 
@@ -59,7 +62,7 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange }) => {
     getTagsFx(tagName).then();
   }, [tagName]);
 
-  handleTagChange(chosenTags)
+
 
   return (
     <div>

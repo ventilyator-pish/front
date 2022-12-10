@@ -2,13 +2,25 @@ import Layout from "@components/layouts/Layout";
 import './App.scss'
 import {Outlet, Route, Routes} from "react-router-dom";
 import Main from "@pages/main/Main";
-import {AUTH, FEEDBACK, MAIN, MY_PROFILE, PROFILE, PROJECT, PROJECTS, STUDENT, STUDENTS} from "@src/routes/routes";
+import {
+    AUTH,
+    COMPANY,
+    FEEDBACK,
+    MAIN,
+    MY_PROFILE,
+    PROFILE,
+    PROJECT,
+    PROJECTS,
+    STUDENT,
+    STUDENTS
+} from "@src/routes/routes";
 import Students from "@pages/students/Students";
 import Projects from "@pages/projects/Projects";
 import Profile from "@pages/profile/Profile";
 import Auth from "@pages/auth/Auth";
 import Project from "@pages/project/Project";
 import MyProfile from "@pages/myProfile/MyProfile";
+import Company from "@pages/company/Company";
 
 
 function App() {
@@ -27,6 +39,7 @@ function App() {
                     <Route path={PROJECTS} element={<Projects/>}/>
                     <Route path={PROJECT} element={<Project/>}/>
                     <Route path={MY_PROFILE} element={<MyProfile/>}/>
+                    <Route path={`${COMPANY}:id`} element={<Company/>}/>
                     <Route path={AUTH} element={<Auth/>}/>
                 </Route>
             </Routes>

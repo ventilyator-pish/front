@@ -1,21 +1,30 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import styles from './StudentCard.module.scss';
 import { IStudent } from '@lib/types/cards/cards';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useStore } from 'effector-react';
 import { $students, getStudentsFx } from '@store/students/studentsStore';
 import { Student } from '@src/utils/api/types/main';
 import { combineInfo } from '@src/utils/combineInfo';
-import {useLocation, useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import noPhoto from '@assets/mock/noImage.png';
-import {STUDENT} from "@src/routes/routes";
+import { STUDENT } from '@src/routes/routes';
+import cn from 'classnames';
+import { $profile, showFeedBack } from '@store/profile/profile';
 
 interface StudentCardProps {
   role: 'redactor' | 'viewer';
   student: Student;
+  isProfile?: boolean;
+  onChangeView?: () => void | null;
 }
 
-export const StudentCard: FC<StudentCardProps> = ({ role, student }) => {
+export const StudentCard: FC<StudentCardProps> = ({
+  role,
+  student,
+  isProfile = false,
+  onChangeView = null,
+}) => {
   const {
     id,
     first_name,
@@ -31,9 +40,12 @@ export const StudentCard: FC<StudentCardProps> = ({ role, student }) => {
     is_public,
     last_name,
   } = student;
+  const profile = useStore($profile);
+  const handleFeedback = () => {
+    showFeedBack();
+  };
   const [infoValue, setInfo] = useState('');
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const infoHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInfo(e.target.value);
@@ -59,6 +71,18 @@ export const StudentCard: FC<StudentCardProps> = ({ role, student }) => {
         value={infoValue}
         onChange={infoHandler}
       />
+      <div className={styles.managementButtons}>
+        {role === 'viewer' && isProfile && (
+          <Button className={cn(styles.managementButton, styles.sendBtn)}>
+            Отправить сообщение
+          </Button>
+        )}
+        {isProfile && (
+          <Button className={cn(styles.managementButton, styles.sendBtn)} onClick={handleFeedback}>
+            {profile.shouldShowFeedback ? 'Вернуться в профиль' : 'Отзывы о студенте'}
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

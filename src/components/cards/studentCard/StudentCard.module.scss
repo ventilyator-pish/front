@@ -76,3 +76,29 @@
   line-height: 120%;
   color: #FFFFFF;
 }
+
+.managementButtons{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.managementButton{
+  width: 100%;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  height: 50px;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sendBtn{
+  background: #FFFFFF !important;
+}

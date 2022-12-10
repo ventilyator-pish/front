@@ -2,7 +2,7 @@ import Layout from "@components/layouts/Layout";
 import './App.scss'
 import {Outlet, Route, Routes} from "react-router-dom";
 import Main from "@pages/main/Main";
-import {AUTH, MAIN, MY_PROFILE, PROFILE, PROJECT, PROJECTS, STUDENT, STUDENTS} from "@src/routes/routes";
+import {AUTH, FEEDBACK, MAIN, MY_PROFILE, PROFILE, PROJECT, PROJECTS, STUDENT, STUDENTS} from "@src/routes/routes";
 import Students from "@pages/students/Students";
 import Projects from "@pages/projects/Projects";
 import Profile from "@pages/profile/Profile";
@@ -23,6 +23,7 @@ function App() {
                     <Route path={MAIN} element={<Main/>}/>
                     <Route path={STUDENTS} element={<Students/>}/>
                     <Route path={`${STUDENT}:id`} element={<Profile/>}/>
+                    <Route path={FEEDBACK} element={<Profile/>}/>
                     <Route path={PROJECTS} element={<Projects/>}/>
                     <Route path={PROJECT} element={<Project/>}/>
                     <Route path={MY_PROFILE} element={<MyProfile/>}/>

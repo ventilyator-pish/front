@@ -1,11 +1,5 @@
 import {ServerResponse} from "@src/utils/api/types/global";
 
-export type Tag = {
-    id: number;
-    keyword: string;
-    color: string;
-}
-
 export type Student = {
     id: number;
     email: string;
@@ -33,6 +27,22 @@ export type Project = {
     is_verified?: boolean;
     company?: number;
 };
+
+export type Tag = {
+    id: number;
+    keyword: string;
+    color: string;
+}
+
+export type Company = {
+    id: number;
+    name: string;
+    description: string;
+    is_verified: boolean;
+    interest_tags: any;
+    skills: any;
+
+}
 
 export type User = {
     id: number;

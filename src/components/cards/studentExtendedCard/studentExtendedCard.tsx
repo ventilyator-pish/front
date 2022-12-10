@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Student, Tag } from "@src/utils/api/types/main"
 import { StudentCard } from '../studentCard/StudentCard'
-import styles from "@components/cards/studentExtendedCard/studentExtendedCard.module.scss";
+import styles from "./studentExtendedCard.module.scss"
 
 
 interface StudentExtendedCardProps {
@@ -11,10 +11,10 @@ interface StudentExtendedCardProps {
 
 export const StudentExtendedCard: FC<StudentExtendedCardProps> = ({student}) => {
     // TODO: fix styles
-
+  console.log(student)
     return <div className="d-flex">
             <StudentCard student={student} role="viewer"/>
-            <div>
+            <div className={styles.wrapper}>
                 <div>
                     <p>Скилы</p>
                     {student.skills?.map((tag) => (
@@ -25,7 +25,7 @@ export const StudentExtendedCard: FC<StudentExtendedCardProps> = ({student}) => 
                 </div>
                 <div>
                     <p>Интересы</p>
-                    {student.interests_tags?.map((tag) => (
+                    {student.interest_tags?.map((tag) => (
                     <div className={styles.tagKeyword} key={tag.id}>
                         {tag.keyword}
                     </div>

@@ -1,0 +1,58 @@
+.formWrapper {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 32px;
+  padding: 70px;
+}
+
+.login{
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 40px;
+  letter-spacing: 1px;
+  color: #14142B;
+  margin-bottom: 30px;
+}
+
+.inputMail{
+  border: 2px solid #4547BB;
+  display: flex;
+  padding: 0 20px;
+  border-radius: 16px;
+  background: #FCFCFC;
+  height: 64px;
+  & .inputMailImgWrapper{
+    display: flex;
+    align-items: center;
+  }
+  & .inputMailImg{
+    object-fit: contain;
+  }
+  & input{
+    border: 0;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+.formInputs{
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.btnLogin{
+  background: #4547BB !important;
+  border-radius: 16px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.75px;
+  color: #F7F7FC;
+
+}

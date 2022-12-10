@@ -1,0 +1,19 @@
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  column-gap: 80px;
+}
+
+.link{
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}

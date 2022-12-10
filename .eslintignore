@@ -1,0 +1,7 @@
+.babelrc
+
+/src/assets/static/
+
+config-overrides.js
+
+node_modules/

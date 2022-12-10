@@ -1,4 +1,43 @@
-.wrapper{
-  padding: 10px;
-  background: antiquewhite;
+.students{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 270px));
+  grid-template-rows: auto;
+  gap: 60px;
+}
+
+.student{
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar{
+  object-fit: cover;
+  height: 275px;
+  width: 100%;
+}
+
+.name{
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 120%;
+  color: #FFFFFF !important;
+  margin-top: 17px;
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.about{
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 120%;
+  color: #FFFFFF !important;
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  resize: none;
+  overflow: hidden;
+  position: relative;
 }

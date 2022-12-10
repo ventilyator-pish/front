@@ -1,17 +1,32 @@
-import React from 'react';
-import './App.scss';
-import {Button} from "react-bootstrap";
-import StudentCard from "./components/cards/studentCard/StudentCard";
+import Layout from "@components/layouts/Layout";
+import './App.scss'
+import {Outlet, Route, Routes} from "react-router-dom";
+import Main from "@pages/main/Main";
+import {AUTH, MAIN, PROFILE, PROJECT, PROJECTS, STUDENTS} from "@src/routes/routes";
+import Students from "@pages/students/Students";
+import Projects from "@pages/projects/Projects";
+import Profile from "@pages/profile/Profile";
+import Auth from "@pages/auth/Auth";
+import Project from "@pages/project/Project";
+
 
 function App() {
     return (
         <div className="App">
-            1234
-            <Button>
-                Test
-            </Button>
-            <StudentCard />
-
+            <Routes>
+                <Route element={
+                    <Layout>
+                        <Outlet/>
+                    </Layout>
+                }>
+                    <Route path={MAIN} element={<Main/>}/>
+                    <Route path={STUDENTS} element={<Students/>}/>
+                    <Route path={PROJECTS} element={<Projects/>}/>
+                    <Route path={PROJECT} element={<Project/>}/>
+                    <Route path={PROFILE} element={<Profile/>}/>
+                    <Route path={AUTH} element={<Auth/>}/>
+                </Route>
+            </Routes>
         </div>
     );
 }

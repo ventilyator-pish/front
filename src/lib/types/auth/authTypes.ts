@@ -1,5 +1,5 @@
 export interface CreateJWTProps {
-    email: string;
+    username: string;
     password: string;
 }
 

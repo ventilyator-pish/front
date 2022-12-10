@@ -8,23 +8,27 @@ import {CreateJWTProps} from "@lib/types/auth/authTypes";
 import {MAIN} from "@src/routes/routes";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import {creatAuthTokenAndSaveLocalFx} from "@store/auth/authStore";
 
 interface CustomInputProps {
-    type: 'email' | 'password'
+    type: 'email' | 'password',
+  handleChange: any;
+  name: string;
+
 }
 
 enum CurrentInput {
     email= 'Email',
-    password = 'Password'
+    password = 'Password',
 
 }
 
 const initValues: CreateJWTProps = {
-    email: '',
-    password: ''
+  username: '',
+    password: '',
 }
 
-const CustomInput: FC<CustomInputProps> = ({type}) => {
+const CustomInput: FC<CustomInputProps> = ({type, handleChange, name}) => {
     const refInput = useRef<HTMLInputElement>(null);
     const onDivClick = () => {
         // `current` points to the mounted text input element
@@ -38,7 +42,7 @@ const CustomInput: FC<CustomInputProps> = ({type}) => {
             <div className={styles.inputMailImgWrapper}>
                 <img src={type === 'email' ? mail : view} alt="mail" className={styles.inputMailImg}/>
             </div>
-            <Form.Control ref={refInput} placeholder={CurrentInput[type]} type={type === 'email' ? 'text' :'password'}/>
+            <Form.Control onChange={handleChange} ref={refInput} placeholder={CurrentInput[type]} name={name} type={type === 'email' ? 'text' :'password'}/>
         </div>
     )
 }
@@ -48,8 +52,7 @@ const FormLogin = () => {
     const createTokenAndRedirect = useCallback(
         async (e: CreateJWTProps) => {
             try {
-                // await creatAuthTokenAndSaveLocalFx(e);
-                console.log(12321)
+                await creatAuthTokenAndSaveLocalFx(e);
                 navigate(MAIN);
             } catch (e: any) {
                 toast.error('Неверный логин или пароль.');
@@ -65,8 +68,8 @@ const FormLogin = () => {
                 {({ handleChange, submitForm }) => {
                     return (
                         <Form className={styles.formInputs}>
-                            <CustomInput type={'email'}/>
-                            <CustomInput type={'password'}/>
+                            <CustomInput type={'email'} name={'username'} handleChange={handleChange}/>
+                            <CustomInput type={'password'} name={'password'} handleChange={handleChange}/>
                             <Button className={styles.btnLogin} onClick={submitForm}>Войти</Button>
                         </Form>
                     )

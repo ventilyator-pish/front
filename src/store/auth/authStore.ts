@@ -11,8 +11,8 @@ const authDomain = createDomain();
 
 export const creatAuthTokenAndSaveLocalFx = authDomain.createEffect(
     async (params: CreateJWTProps) => {
-        const res = await http.post<{ auth_token: string }>(urls.authLogin(), params);
-        const token = res.data.auth_token;
+        const res = await http.post<{ access: string }>(urls.authLogin(), params);
+        const token = res.data.access;
         localStorage.setItem(LOCAL_TOKEN_KEY, token);
         return token;
     },

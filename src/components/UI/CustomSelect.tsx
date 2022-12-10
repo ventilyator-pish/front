@@ -1,7 +1,7 @@
-import Select from 'react-select';
+import Select, {components} from 'react-select';
 import styles from './CustomSelect.module.scss';
-import React, { FC } from 'react';
-import SearchIcon from "@assets/icons/SearchIcon";
+import React, {FC, useEffect} from 'react';
+import SearchIcon from '@assets/icons/SearchIcon';
 
 export const customStyles = (isFilter: boolean, isMulti: boolean, size: 'big' | 'small') => ({
   control: (provided: any, state: any) => ({
@@ -137,6 +137,7 @@ interface ICustomSelect {
   isSearchable?: boolean;
   isClearable?: boolean;
   isDisabled?: boolean;
+  autoFocus?: boolean;
 }
 
 interface ICustomSingleValue {
@@ -149,6 +150,22 @@ const customSingleValue: FC<ICustomSingleValue> = ({ data }) => (
     <div className={styles.customSingleValue}>{data.label}</div>
   </div>
 );
+
+const Control = ({ children, ...props }: any) => {
+  const {clearValue, getValue, hasValue, selectProps} = props
+
+  useEffect(() => {
+    console.log(getValue())
+    clearValue()
+      console.log(123)
+  }, [])
+
+  return (
+      <components.Control {...props}>
+        <>{children}</>
+      </components.Control>
+  );
+};
 
 const customPlaceholder: FC = () => (
   <div className={styles.customSingleValueWrapper}>
@@ -172,21 +189,23 @@ const CustomSelect: FC<ICustomSelect> = ({
   isSearchable = false,
   isClearable = false,
   isDisabled = false,
+  autoFocus = false,
+  // menuIsOpen = false,
 }) => {
   return (
     <Select
       name={name}
+      autoFocus={autoFocus}
       styles={customStyles(isFilter, isMulti, size)}
       options={options}
       isSearchable={isSearchable}
       isClearable={isClearable}
       defaultValue={defaultValue}
       placeholder={placeholder}
-
       // @ts-ignore
       components={Object.assign(
         { ...components },
-        isFilter && { SingleValue: customSingleValue, Placeholder: customPlaceholder },
+        isFilter && { Control },
       )}
       isMulti={isMulti}
       className={className}
@@ -196,7 +215,6 @@ const CustomSelect: FC<ICustomSelect> = ({
       onChange={onChange}
       closeMenuOnSelect={!isMulti}
       isDisabled={isDisabled}
-      // menuIsOpen={true}
     />
   );
 };

@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <div className={styles.wrapper}>
         {
-            student && <StudentCard role={'redactor'} student={student}/>
+            student ? <StudentCard role={'redactor'} student={student}/> : <div></div>
         }
       <div className={styles.about}>
         <ProfileInfo />

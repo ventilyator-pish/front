@@ -20,11 +20,11 @@ export const http = axios.create({
     withCredentials: false
 });
 
-/*http.interceptors.request.use(async (config) => {
+http.interceptors.request.use(async (config) => {
     try {
         const token = localStorage.getItem(LOCAL_TOKEN_KEY);
         if (token) {
-            config.headers!.Authorization = 'TOKEN ' + token;
+            config.headers!.Authorization = 'JWT ' + token;
         }
     } catch (e) {
         console.log('DB GET TOKEN: ', e);
@@ -46,5 +46,5 @@ http.interceptors.response.use(function (response) {
 const handelUnauthorizedStatus = () => {
     localStorage.removeItem(LOCAL_TOKEN_KEY);
     window.location.href = '/login'
-}*/
+}
 

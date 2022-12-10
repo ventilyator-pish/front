@@ -27,5 +27,21 @@ export type Project = {
     company?: number;
 };
 
+export type Tag = {
+    id: number;
+    keyword: string;
+    color: string;
+}
+
+export type User = {
+    id: number;
+    email: string;
+    username: string;
+    interests_tags?: number[];
+    skills?: number[]
+    studentprofile: Student
+}
+
+
 export type GetStudents = Student[]
 export type GetProjects = ServerResponse<Project>

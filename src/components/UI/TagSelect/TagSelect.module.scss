@@ -1,0 +1,122 @@
+.label{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.25px;
+  color: #1E1E1E;
+  margin-bottom: 20px;
+  margin-top: 12px;
+}
+
+.tags{
+  display: flex;
+  gap: 16px;
+
+}
+.selectWrapper{
+    position: relative;
+    &::after{
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: url("../../../assets/icons/search.svg")center center/cover no-repeat;
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+}
+.selectTagInput{
+  background: #EFF0F7 !important;
+  border-radius: 16px;
+  box-shadow: none !important;
+  border: none;
+  height: 70px;
+  padding-left: 70px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #14142B;
+  &::placeholder{
+    color: #6E7191;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 10px;
+    transform: translateY(-3px);
+  }
+}
+
+.selectTag{
+  & > div:nth-child(3){
+    padding: 0 24px 0 70px !important;
+    position: relative;
+    &::after{
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: url("../../../assets/icons/search.svg")center center/cover no-repeat;
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.searchedTags{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  max-height: 170px;
+  left: 0;
+  background: red;
+  border-radius: 16px;
+  z-index: 100000;
+  overflow: auto;
+}
+
+.tagKeyword{
+  width: 100%;
+  padding: 7px;
+  background: #828282;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #000000;
+  cursor: pointer;
+  &:hover{
+    background: yellow;
+  }
+}
+
+.positionFor{
+  height: 0;
+  margin-top: 3px;
+  position: relative;
+}
+
+.chosenTags{
+  display: flex;
+  column-gap: 15px;
+  margin-top: 10px;
+  & .chosenTag{
+    border-radius: 10px;
+    padding: 7px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px;
+
+    color: #000000;
+  }
+}

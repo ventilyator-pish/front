@@ -15,7 +15,8 @@ export type Student = {
     is_public?: boolean;
     is_verified?: boolean;
     user: number;
-
+    interests_tags?: Tag[];
+    skills?: Tag[]
 };
 
 export type Project = {
@@ -52,13 +53,6 @@ export type User = {
     studentprofile: Student
 }
 
-export type Review = {
-    id: number;
-    company: Company;
-    review: string;
-    updated_at: string;
-
-}
 
 export type GetStudents = Student[]
 export type GetProjects = ServerResponse<Project>

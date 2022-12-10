@@ -8,9 +8,13 @@ const studentsDomain = createDomain();
 
 export const getStudentsFx = studentsDomain.createEffect(async () => {
     const res = await http.get<GetStudents>(urls.students());
-    console.log(res)
     return res.data;
 });
+
+export const getRelatedStudents = studentsDomain.createEffect(async (tags: string) => {
+    const res = await http.get<GetStudents>(urls.filterStudents(tags))
+    return res.data;
+})
 
 export const $students = studentsDomain
     .createStore<Student[]>([])

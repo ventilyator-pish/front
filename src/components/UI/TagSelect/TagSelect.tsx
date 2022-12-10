@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './TagSelect.module.scss';
 import CustomSelect from '@components/UI/CustomSelect';
 import { useStore } from 'effector-react';
@@ -7,7 +7,13 @@ import { Input } from 'react-select/animated';
 import { Form } from 'react-bootstrap';
 import { Tag } from '@src/utils/api/types/main';
 
-const TagSelect = () => {
+
+interface TagSelectProps { 
+  handleTagChange?: any
+}
+
+
+const TagSelect: FC<TagSelectProps> = ({ handleTagChange }) => {
   const refInput = useRef(null);
   const chooseRef = useRef(null);
 
@@ -20,10 +26,13 @@ const TagSelect = () => {
     setChosenTags((prev) => prev.filter((tag) => tag.id !== id));
     setExcludedIdTags((prev) => prev.filter((excludedId) => excludedId !== id))
   };
+
   const handleTagName = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTagName(e.target.value);
   };
+
   const tags = useStore($tags);
+
   const addTags = (id: number) => {
     if (refInput?.current) {
       console.dir(refInput.current);
@@ -40,16 +49,18 @@ const TagSelect = () => {
     setChosenTags((prev) => [...prev, tags.find((tag) => tag.id === id)]);
     setExcludedIdTags((prev) => [...prev, id]);
   };
+
   const showTagsOnFocus = () => {
     getTagsFx(tagName).then();
     setIsShowTags(true);
   };
-  const hideTagsOnFocus = () => {
-    setIsShowTags(false);
-  };
+
   useEffect(() => {
     getTagsFx(tagName).then();
   }, [tagName]);
+
+  handleTagChange(chosenTags)
+
   return (
     <div>
       <div className={styles.selectWrapper}>

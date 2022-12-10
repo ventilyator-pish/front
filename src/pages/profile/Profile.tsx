@@ -5,6 +5,8 @@ import { students } from '@components/cards/studentCard/Students.mock';
 import ProfileInfo from '@components/profile/profileInfo/ProfileInfo';
 import ProfileSkills from '@components/profile/profileSkills/ProfileSkills';
 import ProfileInterests from '@components/profile/profileInterests/ProfileInterests';
+import ProfileProjects from '@components/profile/profileProjects/ProfileProjects';
+
 import { useParams } from 'react-router-dom';
 import { $studentById, getStudentByIdFx } from '@store/student/studentStore';
 import { useStore } from 'effector-react';
@@ -36,6 +38,7 @@ const Profile = () => {
             <ProfileInfo />
             <ProfileSkills />
             <ProfileInterests />
+            <ProfileProjects />
           </>
         )}
       </div>

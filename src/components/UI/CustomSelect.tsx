@@ -47,10 +47,10 @@ export const customStyles = (isFilter: boolean, isMulti: boolean, size: 'big' | 
   singleValue: (provided: any, state: any) => ({
     ...provided,
     fontWeight: '700',
-    fontSize: '16px',
+    fontSize: '18px',
     lineHeight: '24px',
     letterSpacing: '-0.03em',
-    color: '#828282',
+    color: '#4E4B66',
   }),
   placeholder: (provided: any, state: any) => ({
     ...provided,
@@ -136,6 +136,7 @@ interface ICustomSelect {
   onChange?: any;
   isSearchable?: boolean;
   isClearable?: boolean;
+  isDisabled?: boolean;
 }
 
 interface ICustomSingleValue {
@@ -170,6 +171,7 @@ const CustomSelect: FC<ICustomSelect> = ({
   onChange,
   isSearchable = false,
   isClearable = false,
+  isDisabled = false,
 }) => {
   return (
     <Select
@@ -180,6 +182,7 @@ const CustomSelect: FC<ICustomSelect> = ({
       isClearable={isClearable}
       defaultValue={defaultValue}
       placeholder={placeholder}
+
       // @ts-ignore
       components={Object.assign(
         { ...components },
@@ -192,6 +195,7 @@ const CustomSelect: FC<ICustomSelect> = ({
       setValue={setValue}
       onChange={onChange}
       closeMenuOnSelect={!isMulti}
+      isDisabled={isDisabled}
       // menuIsOpen={true}
     />
   );

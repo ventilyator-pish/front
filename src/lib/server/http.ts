@@ -9,7 +9,7 @@ type ServerMode = {
 
 const URL: ServerMode = {
     prod: '',
-    dev: 'http://95.163.234.199:4022',
+    dev: 'https://engineers-itmo.ru',
 };
 
 // export const BASE_URL = process.env.REACT_APP_URL || ''

@@ -41,3 +41,38 @@
   overflow: hidden;
   position: relative;
 }
+
+.profileOpportunities{
+  margin-top: 40px;
+}
+
+.label{
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+
+.sendMessageBtn{
+  background: #FFFFFF;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.75px;
+  color: #14142B;
+  height: 50px;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.info{
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 120%;
+  color: #FFFFFF;
+}

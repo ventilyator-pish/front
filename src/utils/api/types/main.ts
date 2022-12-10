@@ -3,6 +3,7 @@ import {ServerResponse} from "@src/utils/api/types/global";
 export type Student = {
     id: number;
     email: string;
+    image: string | undefined;
     first_name: string;
     last_name: string;
     coverage?: string;
@@ -26,5 +27,5 @@ export type Project = {
     company?: number;
 };
 
-export type GetStudents = ServerResponse<Student>
+export type GetStudents = Student[]
 export type GetProjects = ServerResponse<Project>

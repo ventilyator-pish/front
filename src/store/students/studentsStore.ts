@@ -4,13 +4,14 @@ import { urls } from '@server/urls';
 import { createDomain } from 'effector';
 import {GetStudents, Student} from "@src/utils/api/types/main";
 
-const profileDomain = createDomain();
+const studentsDomain = createDomain();
 
-export const getStudents = profileDomain.createEffect(async () => {
+export const getStudentsFx = studentsDomain.createEffect(async () => {
     const res = await http.get<GetStudents>(urls.students());
-    return res.data.results;
+    console.log(res)
+    return res.data;
 });
 
-export const $students = profileDomain
+export const $students = studentsDomain
     .createStore<Student[]>([])
-    .on(getStudents.doneData, (_, payload) => payload);
+    .on(getStudentsFx.doneData, (_, payload) => payload);

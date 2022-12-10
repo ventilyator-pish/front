@@ -2,17 +2,23 @@ import React, {FC, useCallback, useEffect, useState} from 'react';
 import {useStore} from "effector-react";
 import styles from "@components/cards/studentCard/StudentCard.module.scss";
 import {$projects, getProjects} from "@store/projects/projectsStore";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {Project} from "@src/utils/api/types/main";
 import {useLocation} from "react-router-dom";
+import {isProjectById} from "@src/utils/isProjectById";
+import CustomSelect from "@components/UI/CustomSelect";
 
 interface ProjectCardProps {
     role: 'redactor' | "viewer"
     project: Project
 }
+const values = [
+    { value: 'IT', label: 'IT' },
+    { value: 'ML', label: 'ML' },
+    { value: 'Frontend', label: 'Frontend' },
+];
 export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
-    const location = useLocation()
-    console.log(location)
+    const {pathname} = useLocation()
     const {description, image, name, id, company, is_verified} = project
     const [nameValue, setName] = useState(name)
     const [descriptionValue, setDescriptionValue] = useState(description)
@@ -33,6 +39,14 @@ export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
             <Form.Control value={nameValue} className={styles.name} disabled={!isRedactor()} onChange={nameHandler}/>
             <Form.Control as={'textarea'} disabled={!isRedactor()} className={styles.about} value={descriptionValue}
                           onChange={descriptionHandler}/>
+            {
+                isProjectById(pathname) &&
+                <div className={styles.profileOpportunities}>
+                    <CustomSelect options={values} defaultValue={values[0]} isDisabled={true}/>
+                    <div className={styles.label}>Категория</div>
+                    <Button className={styles.sendMessageBtn}>Отправить сообщение</Button>
+                </div>
+            }
         </div>
     );
 };

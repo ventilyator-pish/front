@@ -16,7 +16,7 @@ const MyProfile = () => {
   return (
     <div className={styles.wrapper}>
       {
-        me?.studentprofile ? <StudentCard role={'redactor'} student={me.studentprofile}/> : <div></div>
+        me?.studentprofile ? <StudentCard role={'redactor'} student={me.studentprofile} isProfile={true}/> : <div></div>
       }
       <div className={styles.about}>
         <ProfileInfo />

@@ -33,6 +33,16 @@ export type Tag = {
     color: string;
 }
 
+export type Company = {
+    id: number;
+    name: string;
+    description: string;
+    is_verified: boolean;
+    interest_tags: any;
+    skills: any;
+
+}
+
 export type User = {
     id: number;
     email: string;
@@ -42,6 +52,13 @@ export type User = {
     studentprofile: Student
 }
 
+export type Review = {
+    id: number;
+    company: Company;
+    review: string;
+    updated_at: string;
+
+}
 
 export type GetStudents = Student[]
 export type GetProjects = ServerResponse<Project>

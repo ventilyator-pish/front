@@ -42,7 +42,7 @@ const CustomInput: FC<CustomInputProps> = ({type, handleChange, name}) => {
             <div className={styles.inputMailImgWrapper}>
                 <img src={type === 'email' ? mail : view} alt="mail" className={styles.inputMailImg}/>
             </div>
-            <Form.Control onChange={handleChange} ref={refInput} placeholder={CurrentInput[type]} name={name} type={type === 'email' ? 'text' :'password'}/>
+            <Form.Control className={styles.inputAuth} onChange={handleChange} ref={refInput} placeholder={CurrentInput[type]} name={name} type={type === 'email' ? 'text' :'password'}/>
         </div>
     )
 }

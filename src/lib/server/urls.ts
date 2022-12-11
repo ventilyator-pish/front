@@ -12,5 +12,6 @@ export const urls = {
     createReview: () => `/api/reviews/`,
     invites: (id: string, initiator: string) => `/api/student_requests/?student=${id}&initiator=${initiator}`,
     companyById: (id: string) => `/api/companies/${id}/`,
-    decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`
+    decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`,
+    crowdfounding: () => '/api/crowdfounding/',
 }

@@ -9,8 +9,10 @@ import {isProjectById} from "@src/utils/isProjectById";
 import CustomSelect from "@components/UI/CustomSelect";
 import EmptyImage from "@components/plugs/EmptyImage";
 import {PROJECT} from "@src/routes/routes";
-import {$modals} from "@store/modal/modalStore";
+import {$modals, handleIsShowFinancingProjectModal} from "@store/modal/modalStore";
 import CreatingProjectModal from "@components/modals/creatingProject/CreatingProjectModal";
+import {$me} from "@store/me/meStore";
+import FinancingModal from "@components/modals/financingModal/FinancingModal";
 
 interface ProjectCardProps {
     role: 'redactor' | "viewer"
@@ -24,7 +26,8 @@ const values = [
 export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
     const {pathname} = useLocation()
     const navigate = useNavigate()
-
+    const me = useStore($me)
+    console.log(project, me)
     const {description, image, name, id, company, is_verified} = project
     const [nameValue, setName] = useState(name)
     const [descriptionValue, setDescriptionValue] = useState(description)
@@ -39,6 +42,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
     }, [role])
     return (
         <div className={styles.student} onClick={() => navigate(PROJECT + project.id)}>
+            <FinancingModal />
             {
                 image ? <div className={styles.avatar}><img src={image} alt="photo" className={styles.avatarImage}/></div> : <EmptyImage type={'project'}/>
             }
@@ -51,6 +55,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
                     <CustomSelect options={values} defaultValue={values[0]} isDisabled={true}/>
                     <div className={styles.label}>Категория</div>
                     <Button className={styles.sendMessageBtn}>Отправить сообщение</Button>
+                    <Button className={styles.sendMessageBtn} onClick={() => handleIsShowFinancingProjectModal(true)}>Запросить финансирование</Button>
                 </div>
             }
         </div>

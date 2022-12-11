@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Crowdfunding.module.scss';
-import { NavLink } from 'react-router-dom';
-import { PROJECTS, STUDENTS } from '@src/routes/routes';
+import {NavLink, useNavigate} from 'react-router-dom';
+import {MY_PROFILE, PROJECTS, STUDENTS} from '@src/routes/routes';
 import { Button } from 'react-bootstrap';
 import CrowdfundingCard from '@components/cards/crowdfundingCard/CrowdfundingCard';
 import TagSelect from "@components/UI/TagSelect/TagSelect";
@@ -11,6 +11,7 @@ import {getRelatedStudents} from "@store/students/studentsStore";
 const Crowdfunding = () => {
   const [type, setType] = useState<'financing' | 'support'>('financing');
   const [tags, onTagsChange] = useState<Tag[]>([]);
+  const navigate = useNavigate()
   const handleFinancing = () => {
     setType('financing');
   };
@@ -44,7 +45,7 @@ const Crowdfunding = () => {
             Запросить финансирование
           </div>
           {type === 'financing' && (
-            <Button className={styles.chooseProjectBtn}>Выбрать проект</Button>
+            <Button className={styles.chooseProjectBtn} onClick={() => navigate(MY_PROFILE)}>Выбрать проект</Button>
           )}
 
         </div>

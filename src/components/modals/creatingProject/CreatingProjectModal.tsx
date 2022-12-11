@@ -22,7 +22,7 @@ interface CustomInputWithLabelProps {
   type: string;
 }
 
-const CustomInputWithLabel: FC<CustomInputWithLabelProps> = ({
+export const CustomInputWithLabel: FC<CustomInputWithLabelProps> = ({
   type,
   label,
   as = 'input',

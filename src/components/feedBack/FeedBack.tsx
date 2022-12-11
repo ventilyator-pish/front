@@ -7,6 +7,7 @@ import {Review} from "@src/utils/api/types/main";
 import {useNavigate} from "react-router-dom";
 import {COMPANY} from "@src/routes/routes";
 import { $me } from '@store/me/meStore';
+import send from '@assets/mock/send.png'
 
 
 interface CommentProps {
@@ -45,38 +46,41 @@ const FeedBack: FC<FeedBackProps> = ({studentId}) => {
       return false;
     }
 
-    addReview({student_id: studentId, text: text}).then();
-    getReviews(studentId);
+    addReview({student_id: studentId, text: text}).then(() => getReviews(studentId));
     setText(``)
     return false;
   };
-  
+
   useEffect(() => {
     if (studentId) {
       getReviews(studentId)
     }
-  }, [])
+  }, [studentId])
 
   console.log(me?.company)
 
   return (
-    <div className={styles.feedBack}>
-      <h3 className={styles.feedbackTitle}>Отзывы о студенте</h3>
-      <div className={styles.comments}>
-        {
-          reviews.map((review) => <Comment review={review} key={review.id}/>)
-        }
+    <div>
+      <div className={styles.feedBack}>
+        <h3 className={styles.feedbackTitle}>Отзывы о студенте</h3>
+        <div className={styles.comments}>
+          {reviews.map((review) => (
+            <Comment review={review} key={review.id} />
+          ))}
+        </div>
       </div>
-      
-      {me?.company && 
+      {me?.company && (
         <div>
-        <form onSubmit={handleReviewSubmit}>
-          <input type="text" onChange={handleInputValue} value={text} />
-          <input type="submit" />
-        </form>
-      </div>
-      }
+          <form onSubmit={handleReviewSubmit} className={styles.form}>
+            <input type="text" onChange={handleInputValue} value={text} />
+            <button type="submit">
+              <img src={send} alt=""/>
+            </button>
+          </form>
+        </div>
+      )}
     </div>
+
   );
 };
 

@@ -1,6 +1,6 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
 import {useStore} from "effector-react";
-import styles from "@components/cards/studentCard/StudentCard.module.scss";
+import styles from "@components/cards/projectCard/ProjectCard.module.scss";
 import {$projects, getProjects} from "@store/projects/projectsStore";
 import {Button, Form} from "react-bootstrap";
 import {Project} from "@src/utils/api/types/main";
@@ -51,11 +51,25 @@ export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
     );
 };
 
-export const ProjectCards = () => {
-    const projects = useStore($projects)
+
+interface ProjectCardsProps {
+    company_id?: number
+    student_id?: number
+}
+
+export const ProjectCards: FC<ProjectCardsProps> = ({company_id, student_id}) => {
+    const [ projects, setProjects ] = useState<Project[]>([]);
+
     useEffect(() => {
-        getProjects().then()
-    }, [])
+        getProjects().then((projects) => {
+            setProjects(projects.filter((project) => (
+                (!company_id && !student_id) 
+                || (company_id && project?.company_id === company_id) 
+                || (student_id && project?.student_id === student_id)
+            )))
+        })
+    }, [company_id, student_id])
+
     return (
         <div className={styles.projects}>
             {projects.map((project) => (

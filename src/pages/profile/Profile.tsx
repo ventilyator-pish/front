@@ -14,6 +14,7 @@ import {$profile, resetShowFeedBack} from "@store/profile/profile";
 import FeedBack from "@components/feedBack/FeedBack";
 import ProfileInvites from '@components/profile/profileInvites/ProfileInvites';
 import { $me } from '@store/me/meStore';
+import InvitingToProject from "@components/modals/invitingToProject/InvitingToProject";
 
 const Profile = () => {
   const me = useStore($me)
@@ -33,6 +34,7 @@ const Profile = () => {
   }, [id]);
   return (
     <div className={styles.wrapper}>
+      <InvitingToProject />
       {student ? <StudentCard role={'viewer'} student={student} isProfile={true} onChangeView={handleIsShowProfile}/> : <div></div>}
       <div className={styles.about}>
         {profile.shouldShowFeedback ? (

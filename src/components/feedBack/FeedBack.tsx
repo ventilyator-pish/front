@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './FeedBack.module.scss';
-import avatar from '@assets/mock/mockPhoto.jpg';
+import avatar from '@assets/mock/company.jpg';
 import { $reviews, addReview, getReviews } from '@store/reviews/reviewsStore';
 import { useStore } from 'effector-react';
 import { Review } from '@src/utils/api/types/main';
@@ -15,10 +15,15 @@ interface CommentProps {
 
 const Comment: FC<CommentProps> = ({ review }) => {
   const navigate = useNavigate();
+  console.log(review);
   return (
     <div className={styles.commentWrapperOutside}>
       <div className={styles.imgWrapper}>
-        <img src={avatar} alt="avatar" />
+        {
+          review.company.image ? <img src={review.company.image} alt="avatar" /> : <img src={avatar} alt="avatar" />
+        }
+
+
       </div>
       <div className={styles.commentWrapper}>
         <div className={styles.whoWrote} onClick={() => navigate(COMPANY + review.company.id)}>
@@ -49,8 +54,7 @@ const FeedBack: FC<FeedBackProps> = ({ studentId }) => {
       return false;
     }
 
-    addReview({ student_id: studentId, text: text })
-      .then(() => getReviews(studentId))
+    addReview({ student_id: studentId, text: text }).then(() => getReviews(studentId));
     setText(``);
     return false;
   };

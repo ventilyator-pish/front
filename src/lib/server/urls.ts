@@ -5,6 +5,7 @@ export const urls = {
     students: () => '/api/profiles/',
     studentById: (id: string) => `/api/profiles/${id}/`,
     projects: () => '/api/projects/',
+    projectsByCompany: (id: number | string) => `/api/projects/?company_id=${id}`,
     projectById: (id: string) => `/api/projects/${id}/`,
     projectByIdDonate: (id: number) => `/api/projects/${id}/donate/`,
     tags: (keyword: string) => `/api/tags/?keyword=${keyword}`,
@@ -16,5 +17,9 @@ export const urls = {
     decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`,
     crowdfounding: () => '/api/crowdfounding/',
     crowdfoundingById: (id: string) => `/api/crowdfounding/${id}/`,
+    profileInviteToProject: (id: string | number) => `/api/profiles/${id}/invite/`,
+    randomPick: () => '/api/tinder/random_pick/',
+    like: (id: string | number) => `/api/tinder/${id}/dislike/`,
+    dislike: (id: string | number) => `/api/tinder/${id}/like/`,
 
 }

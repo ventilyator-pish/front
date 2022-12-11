@@ -10,12 +10,14 @@ import { getRelatedStudents } from '@store/students/studentsStore';
 import { getCrownFoundings } from '@store/crowdfoundings/crowdFoundingsStore';
 import { useStore } from 'effector-react';
 import { $me } from '@store/me/meStore';
+import {$modals} from "@store/modal/modalStore";
 
 const Crowdfunding = () => {
   const me = useStore($me);
   const [type, setType] = useState<'financing' | 'support'>('financing');
   const [tags, onTagsChange] = useState<Tag[]>([]);
   const navigate = useNavigate();
+  const modal = useStore($modals);
   const [crowdfoundings, setCrowdfoundings] = useState<CrowdFounding[]>([]);
   const [myCrowdfoundings, setMyCrowdfoundings] = useState<CrowdFounding[]>([]);
 
@@ -36,7 +38,7 @@ const Crowdfunding = () => {
       setCrowdfoundings(result.filter((cw) => cw.project.company_id != me?.company?.id));
       setMyCrowdfoundings(result.filter((cw) => cw.project.company_id == me?.company?.id));
     });
-  }, [tags]);
+  }, [tags, modal.isShowSupportingProjectModal]);
 
   return (
     <div>

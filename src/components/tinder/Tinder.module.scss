@@ -1,0 +1,52 @@
+.tinder{
+  margin-bottom: 70px;
+  padding: 100px 0;
+}
+
+.title{
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 140%;
+  color: #FFFFFF;
+}
+
+.chooseWrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn{
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: .1s transform;
+  &:active{
+    transform: scale(.9);
+  }
+}
+
+
+.center{
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  align-items: center;
+}
+
+.skip{
+  background: #CCCCCC !important;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  padding: 16px;
+  border: none !important;
+  box-shadow: none !important;
+}
+

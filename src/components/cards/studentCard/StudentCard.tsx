@@ -12,6 +12,7 @@ import { STUDENT } from '@src/routes/routes';
 import cn from 'classnames';
 import { $profile, showFeedBack } from '@store/profile/profile';
 import {ButtonClickEvent} from "plotly.js";
+import {handleIsShowInvitingToProjectModal} from "@store/modal/modalStore";
 
 interface StudentCardProps {
   role: 'redactor' | 'viewer';
@@ -77,6 +78,11 @@ export const StudentCard: FC<StudentCardProps> = ({
         {role === 'viewer' && isProfile && (
           <Button className={cn(styles.managementButton, styles.sendBtn)}>
             Отправить сообщение
+          </Button>
+        )}
+        {role === 'viewer' && isProfile && (
+          <Button className={cn(styles.managementButton, styles.sendBtn)} onClick={() => handleIsShowInvitingToProjectModal(true)}>
+            Пригласить в проект
           </Button>
         )}
         {isProfile && (

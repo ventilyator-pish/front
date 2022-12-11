@@ -82,6 +82,13 @@ export type ProjectRequest = {
     project: Project
 }
 
+export type CrowdFounding = {
+    id: number
+    goal: number
+    current: number
+    project: Project
+}
+
 export type GetStudents = Student[];
 export type GetProjects = Project[];
 export type GetProjectRequest = ProjectRequest[];

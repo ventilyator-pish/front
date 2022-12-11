@@ -14,4 +14,5 @@ export const urls = {
     companyById: (id: string) => `/api/companies/${id}/`,
     decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`,
     crowdfounding: () => '/api/crowdfounding/',
+
 }

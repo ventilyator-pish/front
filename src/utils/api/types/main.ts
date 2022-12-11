@@ -27,6 +27,7 @@ export type Project = {
     is_verified?: boolean;
     company?: number;
 
+    team?: Student[];
     student_id?: number;
     company_id?: number;
 };
@@ -70,7 +71,7 @@ export type ProjectRequest = {
     datetime: string
     state: string
     company: number
-    student: number
+    student: Student
     project: Project
 }
 

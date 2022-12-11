@@ -55,8 +55,8 @@ export type User = {
     username: string;
     interest_tags?: number[];
     skills?: number[]
-    company?: number
-    studentprofile: Student
+    studentprofile: Student;
+    company: Company | null
 }
 
 export type Review = {

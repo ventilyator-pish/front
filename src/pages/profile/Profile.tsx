@@ -15,11 +15,11 @@ import FeedBack from "@components/feedBack/FeedBack";
 import ProfileInvites from '@components/profile/profileInvites/ProfileInvites';
 import { $me } from '@store/me/meStore';
 
-
 const Profile = () => {
   const me = useStore($me)
   const { id } = useParams();
   const student = useStore($studentById);
+
   const [isShowProfile, setIsShowProfile] = useState(true);
   const profile = useStore($profile)
   const handleIsShowProfile = () => {
@@ -43,7 +43,10 @@ const Profile = () => {
             <ProfileSkills />
             <ProfileInterests />
             <ProfileProjects />
-            <ProfileInvites student_id={id} />
+            {
+              me?.id === id && <ProfileInvites student_id={id} />
+            }
+
           </>
         )}
       </div>

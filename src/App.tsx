@@ -1,6 +1,6 @@
 import Layout from "@components/layouts/Layout";
 import './App.scss'
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes, useLocation} from "react-router-dom";
 import {
     AUTH,
     COMPANY,
@@ -19,9 +19,24 @@ import Auth from "@pages/auth/Auth";
 import Project from "@pages/project/Project";
 import MyProfile from "@pages/myProfile/MyProfile";
 import Company from "@pages/company/Company";
+import {useEffect} from "react";
+import {getMeFx} from "@store/me/meStore";
+import {useStore} from "effector-react";
+import {$isAuth, checkLocalAuth} from "@store/auth/authStore";
 
 
 function App() {
+    const isAuth = useStore($isAuth);
+    const location = useLocation()
+    useEffect(() => {
+        checkLocalAuth().then()
+    }, [location.pathname])
+    useEffect(() => {
+        if (isAuth) {
+            getMeFx();
+        }
+    }, [isAuth, location.pathname]);
+
     return (
         <div className="App">
             <Routes>

@@ -46,7 +46,7 @@ const FeedBack: FC<FeedBackProps> = ({studentId}) => {
     }
 
     addReview({student_id: studentId, text: text}).then();
-
+    getReviews(studentId);
     setText(``)
     return false;
   };

@@ -6,14 +6,16 @@ import { $tags, getTagsFx } from '@store/tags/tagsStore';
 import { Input } from 'react-select/animated';
 import { Form } from 'react-bootstrap';
 import { Tag } from '@src/utils/api/types/main';
+import cn from "classnames";
 
 
 interface TagSelectProps {
   handleTagChange?: any
+  theme?: 'light' | 'dark'
 }
 
 
-const TagSelect: FC<TagSelectProps> = ({ handleTagChange }) => {
+const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
   const refInput = useRef(null);
   const chooseRef = useRef(null);
 
@@ -92,7 +94,7 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange }) => {
           </div>
         </>
       )}
-      <div className={styles.label}>Перечислите интересующие вас навыки или выберите теги</div>
+      <div className={cn(styles.label, styles[theme])}>Перечислите интересующие вас навыки или выберите теги</div>
       <div className={styles.chosenTags}>
         {chosenTags.map((tag) => (
           <div

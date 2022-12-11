@@ -12,24 +12,28 @@ interface StudentExtendedCardProps {
 export const StudentExtendedCard: FC<StudentExtendedCardProps> = ({student}) => {
     // TODO: fix styles
   console.log(student)
-    return <div className="d-flex">
+    return <div className={styles.wrapperOuter}>
             <StudentCard student={student} role="viewer"/>
             <div className={styles.wrapper}>
-                <div>
+                <div className={styles.skills}>
                     <p>Скилы</p>
+                  <div className={styles.tags}>
                     {student.skills?.map((tag) => (
-                    <div className={styles.tagKeyword} key={tag.id}>
+                      <div className={styles.tagKeyword} key={tag.id} style={{background: `#${tag.color}`}}>
                         {tag.keyword}
-                    </div>
+                      </div>
                     ))}
+                  </div>
                 </div>
                 <div>
                     <p>Интересы</p>
+                  <div className={styles.tags}>
                     {student.interest_tags?.map((tag) => (
-                    <div className={styles.tagKeyword} key={tag.id}>
+                      <div className={styles.tagKeyword} key={tag.id} style={{background: `#${tag.color}`}}>
                         {tag.keyword}
-                    </div>
+                      </div>
                     ))}
+                  </div>
                 </div>
             </div>
         </div>

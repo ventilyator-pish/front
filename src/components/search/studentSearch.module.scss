@@ -1,21 +1,35 @@
 .relatedStudentList {
-    display: flex;
+  display: flex;
 }
 
-.tagKeyword{
-    width: 100%;
-    padding: 7px;
-    background: #828282;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.75px;
-    color: #000000;
-    cursor: pointer;
-    &:hover{
-      background: yellow;
-    }
+.tagKeyword {
+  width: 100%;
+  padding: 7px;
+  background: #828282;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #000000;
+  cursor: pointer;
+
+  &:hover {
+    background: yellow;
   }
+}
+
+.extendedCards {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  justify-items: center;
+    gap: 60px;
+}
+
+.activeLink{
+  color: #FFFFFF;
+  margin-bottom: 40px;
+}

@@ -1,12 +1,10 @@
 import Layout from "@components/layouts/Layout";
 import './App.scss'
 import {Outlet, Route, Routes} from "react-router-dom";
-import Main from "@pages/main/Main";
 import {
     AUTH,
     COMPANY,
     FEEDBACK,
-    MAIN,
     MY_PROFILE,
     PROFILE,
     PROJECT,
@@ -32,12 +30,11 @@ function App() {
                         <Outlet/>
                     </Layout>
                 }>
-                    <Route path={MAIN} element={<Main/>}/>
                     <Route path={STUDENTS} element={<Students/>}/>
                     <Route path={`${STUDENT}:id`} element={<Profile/>}/>
                     <Route path={FEEDBACK} element={<Profile/>}/>
                     <Route path={PROJECTS} element={<Projects/>}/>
-                    <Route path={PROJECT} element={<Project/>}/>
+                    <Route path={`${PROJECT}:id`} element={<Project/>}/>
                     <Route path={MY_PROFILE} element={<MyProfile/>}/>
                     <Route path={`${COMPANY}:id`} element={<Company/>}/>
                     <Route path={AUTH} element={<Auth/>}/>

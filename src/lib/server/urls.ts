@@ -5,6 +5,7 @@ export const urls = {
     students: () => '/api/profiles/',
     studentById: (id: string) => `/api/profiles/${id}/`,
     projects: () => '/api/projects/',
+    projectById: (id: string) => `/api/projects/${id}/`,
     tags: (keyword: string) => `/api/tags/?keyword=${keyword}`,
     filterStudents: (tagsIds: string) => `/api/profiles?tags=${tagsIds}`,
     reviews: (id: string) => `/api/reviews/?student=${id}`,

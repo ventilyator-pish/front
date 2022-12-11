@@ -1,0 +1,35 @@
+.projectsHeader {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.projectsTitle {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  color: #FFFFFF;
+}
+
+.createProject {
+  background: #FFFFFF !important;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  box-shadow: none !important;
+  margin-left: 20px;
+  border: none;
+}
+
+.projectsWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 270px));
+  grid-template-rows: auto;
+  gap: 60px;
+}

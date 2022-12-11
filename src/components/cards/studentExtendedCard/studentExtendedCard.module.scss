@@ -1,4 +1,41 @@
+.wrapperOuter{
+  display: flex;
+  column-gap: 48px;
+  margin-top: 25px;
+}
+
 .wrapper{
   display: flex;
-  background: red;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.skills{
+  margin-bottom: 30px;
+}
+
+p{
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 120%;
+  color: #FFFFFF;
+  margin-bottom: 17px;
+}
+
+.tagKeyword{
+  padding: 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #000000;
+}
+
+.tags{
+  display: flex;
+  gap: 15px;
 }

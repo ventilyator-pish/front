@@ -43,6 +43,7 @@ export type Company = {
     description: string;
     is_verified: boolean;
     interest_tags: any;
+    image: null | string;
     skills: any;
 
 }

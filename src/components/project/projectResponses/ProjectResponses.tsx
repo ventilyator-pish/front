@@ -17,7 +17,7 @@ const ProjectResponses: FC<ProjectResponsesProps> = ({ project_id }) => {
     getProjectResponses(project_id).then((result) => {
       setResponses(result);
     });
-  });
+  }, []);
 
   if (!responses) {
     return <div></div>;

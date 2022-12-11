@@ -63,5 +63,16 @@ export type Review = {
     review: string;
 }
 
+export type ProjectRequest = {
+    id: number
+    initiator: string
+    datetime: string
+    state: string
+    company: number
+    student: number
+    project: Project
+}
+
 export type GetStudents = Student[];
 export type GetProjects = Project[];
+export type GetProjectRequest = ProjectRequest[];

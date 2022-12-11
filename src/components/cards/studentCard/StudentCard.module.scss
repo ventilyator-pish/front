@@ -1,6 +1,6 @@
 .students{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 270px));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-template-rows: auto;
   gap: 60px;
 }

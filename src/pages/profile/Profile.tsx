@@ -13,12 +13,13 @@ import { useStore } from 'effector-react';
 import {$profile, resetShowFeedBack} from "@store/profile/profile";
 import FeedBack from "@components/feedBack/FeedBack";
 import ProfileInvites from '@components/profile/profileInvites/ProfileInvites';
-import {$me} from "@store/me/meStore";
+import { $me } from '@store/me/meStore';
 
 const Profile = () => {
+  const me = useStore($me)
   const { id } = useParams();
   const student = useStore($studentById);
-  const me = useStore($me)
+
   const [isShowProfile, setIsShowProfile] = useState(true);
   const profile = useStore($profile)
   const handleIsShowProfile = () => {

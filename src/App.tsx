@@ -22,12 +22,15 @@ import Company from "@pages/company/Company";
 import {useEffect} from "react";
 import {getMeFx} from "@store/me/meStore";
 import {useStore} from "effector-react";
-import {$isAuth} from "@store/auth/authStore";
+import {$isAuth, checkLocalAuth} from "@store/auth/authStore";
 
 
 function App() {
     const isAuth = useStore($isAuth);
     const location = useLocation()
+    useEffect(() => {
+        checkLocalAuth().then()
+    }, [location.pathname])
     useEffect(() => {
         if (isAuth) {
             getMeFx();

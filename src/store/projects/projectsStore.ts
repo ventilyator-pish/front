@@ -4,13 +4,13 @@ import { urls } from '@server/urls';
 import { createDomain } from 'effector';
 import {GetProjects, Project} from "@src/utils/api/types/main";
 
-const profileDomain = createDomain();
+const projectDoamin = createDomain();
 
-export const getProjects = profileDomain.createEffect(async () => {
+export const getProjects = projectDoamin.createEffect(async () => {
     const res = await http.get<GetProjects>(urls.projects());
-    return res.data.results;
+    return res.data;
 });
 
-export const $projects = profileDomain
+export const $projects = projectDoamin
     .createStore<Project[]>([])
     .on(getProjects.doneData, (_, payload) => payload);

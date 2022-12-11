@@ -26,6 +26,9 @@ export type Project = {
     description: string;
     is_verified?: boolean;
     company?: number;
+
+    student_id?: number;
+    company_id?: number;
 };
 
 export type Tag = {
@@ -61,5 +64,5 @@ export type Review = {
     review: string;
 }
 
-export type GetStudents = Student[]
-export type GetProjects = ServerResponse<Project>
+export type GetStudents = Student[];
+export type GetProjects = Project[];

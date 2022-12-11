@@ -66,19 +66,6 @@ const Crowdfunding = () => {
         <TagSelect handleTagChange={handleTagChange} theme={'light'} role={'redactor'} />
       )}
       <div className={styles.cards}>
-<<<<<<< HEAD
-        {type === 'financing' && (
-          myCrowdfoundings.map(
-            (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
-          )
-        )}
-        {type === 'support' && (
-          crowdfoundings.map(
-            (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
-          )
-        )}
-
-=======
         {type === 'financing' &&
           myCrowdfoundings.map((crowdfounding) => (
             <CrowdfundingCard
@@ -97,7 +84,6 @@ const Crowdfunding = () => {
               onClick={() => navigate(PROJECT + crowdfounding.project.id)}
             />
           ))}
->>>>>>> cfeb5c5ecfbeca73f1ca073b862433f0d8233294
       </div>
     </div>
   );

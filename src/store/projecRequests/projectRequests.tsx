@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 const projectRequests = createDomain();
 
 
-interface responseDecisionProps {
+interface ResponseDecisionProps {
     request_id: number;
     decision: string;
 }
@@ -27,7 +27,11 @@ export const getProjectResponses = projectRequests.createEffect(async (project_i
 });
 
 
-export const setResponse = projectRequests.createEffect(async ({request_id, decision}: any) => {
+export const makeProjectRequest = projectRequests.createEffect(async (project_id: number) => {
+    const res = await http.post<ProjectRequest>(urls.makeRequest(project_id));
+    return res.data;
+})
+export const setResponse = projectRequests.createEffect(async ({request_id, decision}: ResponseDecisionProps) => {
     const res = await http.post<ProjectRequest>(urls.decideRequest(request_id), {
         decision: decision
     }, {

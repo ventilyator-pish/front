@@ -63,6 +63,7 @@ export type User = {
     skills?: number[]
     studentprofile: Student;
     company: Company | null
+    company_id: number
 }
 
 export type Review = {

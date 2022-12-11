@@ -9,7 +9,6 @@ interface LayoutProps {
 }
 const Layout: FC<LayoutProps> = ({children}) => {
     const {pathname: location} = useLocation()
-    console.log(location)
     return (
         <>
             {

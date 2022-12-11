@@ -23,6 +23,19 @@
   color: #14142B;
 }
 
+.wrapperLink{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & input{
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: none !important;
+
+  }
+}
+
 .select{
   & > div:nth-child(3){
     width: 100%;

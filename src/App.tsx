@@ -1,3 +1,4 @@
+import "@fontsource/raleway";
 import Layout from "@components/layouts/Layout";
 import './App.scss'
 import {Outlet, Route, Routes, useLocation} from "react-router-dom";

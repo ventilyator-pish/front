@@ -4,6 +4,7 @@ export type Student = {
     id: number;
     email: string;
     image: string | undefined;
+    description: string;
     first_name: string;
     last_name: string;
     coverage?: string;
@@ -16,7 +17,7 @@ export type Student = {
     is_verified?: boolean;
     user: number;
     interest_tags?: Tag[];
-    skills?: Tag[]
+    skills: Tag[]
 };
 
 export type Project = {
@@ -60,7 +61,7 @@ export type User = {
     email: string;
     username: string;
     interest_tags?: number[];
-    skills?: number[]
+    skills: number[]
     studentprofile: Student;
     company: Company | null
     company_id: number

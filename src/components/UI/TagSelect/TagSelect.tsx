@@ -13,16 +13,17 @@ interface TagSelectProps {
   handleTagChange?: any
   theme?: 'light' | 'dark'
   role?: 'redactor' | 'viewer'
+  initTags?: Tag[]
 }
 
 
-const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark', role= 'viewer' }) => {
+const TagSelect: FC<TagSelectProps> = ({ initTags, handleTagChange, theme = 'dark', role= 'viewer' }) => {
   const refInput = useRef(null);
   const chooseRef = useRef(null);
-
+  console.log(initTags)
   const [tagName, setTagName] = useState('');
-  const [chosenTags, setChosenTags] = useState<Tag[]>([]);
-  const [excludedIdTags, setExcludedIdTags] = useState<number[]>([]);
+  const [chosenTags, setChosenTags] = useState<Tag[]>(initTags || []);
+  const [excludedIdTags, setExcludedIdTags] = useState<number[]>(initTags?.map((tag) => tag.id) || []);
   const [isShowTags, setIsShowTags] = useState<boolean>(false);
 
   const deleteTag = (id: number) => {

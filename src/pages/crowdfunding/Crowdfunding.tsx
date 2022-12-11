@@ -35,6 +35,7 @@ const Crowdfunding = () => {
   useEffect(() => {
     const tagsProp = tags.map((tag) => tag.id).join(',');
     getCrownFoundings().then((result) => {
+      console.log(result)
       setCrowdfoundings(result.filter((cw) => cw.project.company_id != me?.company?.id));
       setMyCrowdfoundings(result.filter((cw) => cw.project.company_id == me?.company?.id));
     });

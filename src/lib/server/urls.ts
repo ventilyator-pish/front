@@ -1,9 +1,9 @@
 export const urls = {
     authLogin: () => `/api/auth/jwt/create/`,
     authLogout: () => `/api/auth/token/logout/`,
-    me: () => `/api/auth/users/me`,
+    me: () => `/api/auth/users/me/`,
     students: () => '/api/profiles/',
-    studentById: (id: string) => `/api/profiles/${id}/`,
+    studentById: (id: string | number) => `/api/profiles/${id}/`,
     projects: () => '/api/projects/',
     projectsByCompany: (id: number | string) => `/api/projects/?company_id=${id}`,
     projectById: (id: string) => `/api/projects/${id}/`,
@@ -22,6 +22,7 @@ export const urls = {
     randomPick: () => '/api/tinder/random_pick/',
     like: (id: string | number) => `/api/tinder/${id}/dislike/`,
     dislike: (id: string | number) => `/api/tinder/${id}/like/`,
+    updateTags: (id: string | number) => `/api/student_requests/${id}/update_tags/`,
 
 
 }

@@ -24,7 +24,7 @@ export const StudentSearch = () => {
 
     return <div>
         <h3 className={styles.activeLink}>Найдите подходящего специалиста</h3>
-        <TagSelect handleTagChange={handleTagChange} theme={'light'}/>
+        <TagSelect handleTagChange={handleTagChange} theme={'light'} role={'redactor'}/>
         <div className={styles.extendedCards}>
             {students.map((student) => <StudentExtendedCard key={student.id} student={student}/>)}
         </div>

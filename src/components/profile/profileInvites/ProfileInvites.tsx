@@ -24,6 +24,7 @@ const ProfileInvites: FC<ProfileInvitesProps> = ({student_id}) => {
     } 
 
     return <div>
+        <h3>приглашения</h3>
         {invites.map(
             (invite) => <div key={invite.id}>
                 <ProjectCard role="viewer" project={invite.project}/>

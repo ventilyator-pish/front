@@ -4,20 +4,23 @@ import avatar from '@assets/mock/mockPhoto.jpg';
 import {$reviews, getReviews} from "@store/reviews/reviewsStore";
 import {useStore} from "effector-react";
 import {Review} from "@src/utils/api/types/main";
+import {useNavigate} from "react-router-dom";
+import {COMPANY} from "@src/routes/routes";
 
 
 interface CommentProps {
-  review: Review | undefined
+  review: Review
 }
 const Comment: FC<CommentProps> = ({review}) => {
+  const navigate = useNavigate()
   return (
     <div className={styles.commentWrapperOutside}>
       <div className={styles.imgWrapper}>
         <img src={avatar} alt="avatar" />
       </div>
       <div className={styles.commentWrapper}>
-        <div className={styles.whoWrote}>{review?.company.name}</div>
-        <div className={styles.comment}>{review?.review}</div>
+        <div className={styles.whoWrote} onClick={() => navigate(COMPANY + review.company.id)}>{review.company.name}</div>
+        <div className={styles.comment}>{review.review}</div>
       </div>
     </div>
   );

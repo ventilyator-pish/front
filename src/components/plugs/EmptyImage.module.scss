@@ -1,0 +1,12 @@
+.emptyCardInner {
+  row-gap: 8px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  & .noModels {
+    color: #14142B;
+  }
+}

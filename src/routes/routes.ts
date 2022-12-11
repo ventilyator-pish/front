@@ -1,8 +1,7 @@
-export const MAIN = '/';
-export const STUDENTS = '/students';
+export const STUDENTS = '/';
 export const STUDENT = '/student/';
 export const PROJECTS = '/projects';
-export const PROJECT = '/project/:id';
+export const PROJECT = '/project/';
 export const PROFILE = '/profile';
 export const FEEDBACK = '/profile/:id/feedback';
 export const MY_PROFILE = '/me';

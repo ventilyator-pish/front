@@ -1,0 +1,46 @@
+.subtitle {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 110%;
+  color: #FFFFFF;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 270px));
+  grid-template-rows: auto;
+  gap: 60px;
+}
+
+.btn{
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 32px;
+  border: none !important;
+  box-shadow: none !important;
+  color: #14142B !important;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 12px;
+}
+
+.btnAccept{
+  background: #9FFFC1 !important;
+  margin-top: 24px;
+}
+
+.btnCancel{
+  background: #CCCCCC !important;
+}
+
+.responses{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 270px));
+  grid-template-rows: auto;
+  gap: 60px;
+}
+

@@ -9,10 +9,6 @@ import {$me, getMeFx} from "@store/me/meStore";
 
 const MyProfile = () => {
   const me = useStore($me)
-  console.log(me)
-  useEffect(() => {
-      getMeFx();
-  }, []);
   return (
     <div className={styles.wrapper}>
       {

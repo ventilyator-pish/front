@@ -20,7 +20,7 @@ import Project from "@pages/project/Project";
 import MyProfile from "@pages/myProfile/MyProfile";
 import Company from "@pages/company/Company";
 import {useEffect} from "react";
-import {getMeFx} from "@store/me/meStore";
+import {$me, getMeFx} from "@store/me/meStore";
 import {useStore} from "effector-react";
 import {$isAuth, checkLocalAuth} from "@store/auth/authStore";
 

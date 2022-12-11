@@ -20,7 +20,7 @@ const ProjectResponses: FC<ProjectResponsesProps> = ({ project_id }) => {
   }, []);
 
   function acceptRequest(request_id: number) {
-    setResponse({request_id: request_id, decision: "approved"}).then(
+    setResponse({request_id: request_id, decision: "accepted"}).then(
 
     )
   }

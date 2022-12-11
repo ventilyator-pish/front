@@ -16,9 +16,9 @@ const MyProfile = () => {
         me?.studentprofile ? <StudentCard role={'redactor'} student={me.studentprofile} isProfile={true}/> : <div></div>
       }
       <div className={styles.about}>
-        <ProfileInfo />
-        <ProfileSkills />
-        <ProfileInterests />
+        <ProfileInfo role={'redactor'}/>
+        <ProfileSkills role={'redactor'}/>
+        <ProfileInterests role={'redactor'}/>
         <ProfileProjects />
       </div>
     </div>

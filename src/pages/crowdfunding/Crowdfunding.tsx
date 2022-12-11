@@ -50,7 +50,7 @@ const Crowdfunding = () => {
         </div>
 
       </div>
-      {type === 'support' && <TagSelect handleTagChange={handleTagChange} theme={'light'}/>}
+      {type === 'support' && <TagSelect handleTagChange={handleTagChange} theme={'light'} role={'redactor'}/>}
       <div className={styles.cards}>
         {type === 'financing' && (
           <>

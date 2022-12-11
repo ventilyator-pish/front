@@ -12,10 +12,11 @@ import cn from "classnames";
 interface TagSelectProps {
   handleTagChange?: any
   theme?: 'light' | 'dark'
+  role?: 'redactor' | 'viewer'
 }
 
 
-const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
+const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark', role= 'viewer' }) => {
   const refInput = useRef(null);
   const chooseRef = useRef(null);
 
@@ -27,6 +28,9 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
   const deleteTag = (id: number) => {
     setChosenTags((prev) => prev.filter((tag) => tag.id !== id));
     setExcludedIdTags((prev) => prev.filter((excludedId) => excludedId !== id))
+    if(handleTagChange){
+      handleTagChange(chosenTags.filter((tag) => tag.id !== id))
+    }
   };
 
   const handleTagName = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,16 +46,16 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
       refInput.current?.blur();
       setIsShowTags(false);
     }
-
+    if(handleTagChange){
+      handleTagChange([...chosenTags, tags.find((tag) => tag.id === id)])
+    }
     setTagName('');
     if (excludedIdTags.includes(id)) {
       return;
     }
     // @ts-ignore
     setChosenTags((prev) => [...prev, tags.find((tag) => tag.id === id)]);
-    if(handleTagChange){
-      handleTagChange([...chosenTags, tags.find((tag) => tag.id === id)])
-    }
+
     setExcludedIdTags((prev) => [...prev, id]);
   };
 
@@ -76,6 +80,7 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
           className={styles.selectTagInput}
           placeholder={'Поиск'}
           onFocus={showTagsOnFocus}
+          disabled={role === 'viewer'}
           // onBlur={hideTagsOnFocus}
         />
       </div>
@@ -101,7 +106,7 @@ const TagSelect: FC<TagSelectProps> = ({ handleTagChange, theme = 'dark' }) => {
             className={styles.chosenTag}
             key={tag.id}
             style={{ background: `#${tag.color}` }}
-            onClick={() => deleteTag(tag.id)}
+            onClick={() => role === 'redactor' && deleteTag(tag.id)}
           >
             {tag.keyword}
           </div>

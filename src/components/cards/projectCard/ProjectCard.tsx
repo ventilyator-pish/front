@@ -4,9 +4,11 @@ import styles from "@components/cards/projectCard/ProjectCard.module.scss";
 import {$projects, getProjects} from "@store/projects/projectsStore";
 import {Button, Form} from "react-bootstrap";
 import {Project} from "@src/utils/api/types/main";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {isProjectById} from "@src/utils/isProjectById";
 import CustomSelect from "@components/UI/CustomSelect";
+import EmptyImage from "@components/plugs/EmptyImage";
+import {PROJECT} from "@src/routes/routes";
 
 interface ProjectCardProps {
     role: 'redactor' | "viewer"
@@ -19,6 +21,8 @@ const values = [
 ];
 export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
     const {pathname} = useLocation()
+    const navigate = useNavigate()
+
     const {description, image, name, id, company, is_verified} = project
     const [nameValue, setName] = useState(name)
     const [descriptionValue, setDescriptionValue] = useState(description)
@@ -32,9 +36,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({role, project}) => {
         return role === 'redactor'
     }, [role])
     return (
-        <div className={styles.student}>
+        <div className={styles.student} onClick={() => navigate(PROJECT + project.id)}>
             {
-                image ? <img src={image} alt="photo" className={styles.avatar}/> : <div></div>
+                image ? <div className={styles.avatar}><img src={image} alt="photo" className={styles.avatarImage}/></div> : <EmptyImage type={'project'}/>
             }
             <Form.Control value={nameValue} className={styles.name} disabled={!isRedactor()} onChange={nameHandler}/>
             <Form.Control as={'textarea'} disabled={!isRedactor()} className={styles.about} value={descriptionValue}
@@ -59,12 +63,11 @@ interface ProjectCardsProps {
 
 export const ProjectCards: FC<ProjectCardsProps> = ({company_id, student_id}) => {
     const [ projects, setProjects ] = useState<Project[]>([]);
-
     useEffect(() => {
         getProjects().then((projects) => {
             setProjects(projects.filter((project) => (
-                (!company_id && !student_id) 
-                || (company_id && project?.company_id === company_id) 
+                (!company_id && !student_id)
+                || (company_id && project?.company_id === company_id)
                 || (student_id && project?.student_id === student_id)
             )))
         })

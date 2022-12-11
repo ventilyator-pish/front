@@ -66,12 +66,12 @@ const Crowdfunding = () => {
       {type === 'support' && <TagSelect handleTagChange={handleTagChange} theme={'light'} role={'redactor'}/>}
       <div className={styles.cards}>
         {type === 'financing' && (
-          crowdfoundings.map(
+          myCrowdfoundings.map(
             (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
           )
         )}
         {type === 'support' && (
-          myCrowdfoundings.map(
+          crowdfoundings.map(
             (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
           )
         )}

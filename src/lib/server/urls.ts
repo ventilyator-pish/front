@@ -10,9 +10,9 @@ export const urls = {
     filterStudents: (tagsIds: string) => `/api/profiles?tags=${tagsIds}`,
     reviews: (id: string) => `/api/reviews/?student=${id}`,
     createReview: () => `/api/reviews/`,
-    invites: (id: string, initiator: string) => `/api/student_requests/?student=${id}&initiator=${initiator}`,
+    invites: (id: string, initiator: string) => `/api/student_requests/?id=${id}&initiator=${initiator}`,
     companyById: (id: string) => `/api/companies/${id}/`,
+    makeRequest: (id: number) => `/api/projects/${id}/request/`,
     decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`,
     crowdfounding: () => '/api/crowdfounding/',
-
 }

@@ -5,12 +5,19 @@ import { PROJECTS, STUDENTS } from '@src/routes/routes';
 import { Button } from 'react-bootstrap';
 import CrowdfundingCard from '@components/cards/crowdfundingCard/CrowdfundingCard';
 import TagSelect from "@components/UI/TagSelect/TagSelect";
-import {Tag} from "@src/utils/api/types/main";
+import {CrowdFounding, Tag} from "@src/utils/api/types/main";
 import {getRelatedStudents} from "@store/students/studentsStore";
+import { getCrownFoundings } from '@store/crowdfoundings/crowdFoundingsStore';
+import { useStore } from 'effector-react';
+import { $me } from '@store/me/meStore';
 
 const Crowdfunding = () => {
+  const me = useStore($me)
   const [type, setType] = useState<'financing' | 'support'>('financing');
   const [tags, onTagsChange] = useState<Tag[]>([]);
+  const [crowdfoundings, setCrowdfoundings] = useState<CrowdFounding[]>([])
+  const [myCrowdfoundings, setMyCrowdfoundings] = useState<CrowdFounding[]>([])
+
   const handleFinancing = () => {
     setType('financing');
   };
@@ -24,8 +31,12 @@ const Crowdfunding = () => {
 
   useEffect(() => {
     const tagsProp = tags.map((tag) => tag.id).join(",");
-
+    getCrownFoundings().then((result) => {
+      setCrowdfoundings(result.filter((cw) => cw.project.company_id != me?.company?.id))
+      setMyCrowdfoundings(result.filter((cw) => cw.project.company_id == me?.company?.id))
+    })
   }, [tags])
+
   return (
     <div>
       <div className={styles.changerWrapper}>
@@ -53,20 +64,14 @@ const Crowdfunding = () => {
       {type === 'support' && <TagSelect handleTagChange={handleTagChange} theme={'light'} role={'redactor'}/>}
       <div className={styles.cards}>
         {type === 'financing' && (
-          <>
-            <CrowdfundingCard type={'financing'}/>
-            <CrowdfundingCard type={'financing'}/>
-            <CrowdfundingCard type={'financing'}/>
-            <CrowdfundingCard type={'financing'}/>
-          </>
+          crowdfoundings.map(
+            (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
+          )
         )}
         {type === 'support' && (
-          <>
-            <CrowdfundingCard type={'support'}/>
-            <CrowdfundingCard type={'support'}/>
-            <CrowdfundingCard type={'support'}/>
-            <CrowdfundingCard type={'support'}/>
-          </>
+          myCrowdfoundings.map(
+            (crowdfounding) => <CrowdfundingCard key={crowdfounding.id} type={type} crowdfounding={crowdfounding}/>
+          )
         )}
 
       </div>

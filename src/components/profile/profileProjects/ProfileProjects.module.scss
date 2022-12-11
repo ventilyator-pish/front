@@ -5,6 +5,29 @@
   color: #FFFFFF;
 }
 
+.createProject {
+  background: #FFFFFF !important;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  box-shadow: none !important;
+  margin-left: 20px;
+  border: none;
+}
+
+.flexHeader{
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 270px));

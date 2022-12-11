@@ -5,6 +5,12 @@
   margin-bottom: 30px;
 }
 
+.headerProjects{
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+}
+
 .projectsTitle {
   font-weight: 700;
   font-size: 20px;

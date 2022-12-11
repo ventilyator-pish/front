@@ -9,6 +9,8 @@ import {isProjectById} from "@src/utils/isProjectById";
 import CustomSelect from "@components/UI/CustomSelect";
 import EmptyImage from "@components/plugs/EmptyImage";
 import {PROJECT} from "@src/routes/routes";
+import {$modals} from "@store/modal/modalStore";
+import CreatingProjectModal from "@components/modals/creatingProject/CreatingProjectModal";
 
 interface ProjectCardProps {
     role: 'redactor' | "viewer"
@@ -63,6 +65,7 @@ interface ProjectCardsProps {
 
 export const ProjectCards: FC<ProjectCardsProps> = ({company_id, student_id}) => {
     const [ projects, setProjects ] = useState<Project[]>([]);
+    const modals = useStore($modals)
     useEffect(() => {
         getProjects().then((projects) => {
             setProjects(projects.filter((project) => (
@@ -71,13 +74,17 @@ export const ProjectCards: FC<ProjectCardsProps> = ({company_id, student_id}) =>
                 || (student_id && project?.student_id === student_id)
             )))
         })
-    }, [company_id, student_id])
+    }, [company_id, student_id, modals.isShowCreatingProjectModal])
 
     return (
-        <div className={styles.projects}>
-            {projects.map((project) => (
+      <>
+          <CreatingProjectModal type={'student'}/>
+          <div className={styles.projects}>
+              {projects.map((project) => (
                 <ProjectCard role={'viewer'} key={project.id} project={project}/>))}
-        </div>
+          </div>
+      </>
+
     )
 };
 

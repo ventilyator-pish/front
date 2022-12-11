@@ -6,6 +6,7 @@ import ProfileInfo from "@components/profile/profileInfo/ProfileInfo";
 import ProfileSkills from "@components/profile/profileSkills/ProfileSkills";
 import ProfileInterests from "@components/profile/profileInterests/ProfileInterests";
 import {$me, getMeFx} from "@store/me/meStore";
+import ProfileProjects from "@components/profile/profileProjects/ProfileProjects";
 
 const MyProfile = () => {
   const me = useStore($me)
@@ -18,6 +19,7 @@ const MyProfile = () => {
         <ProfileInfo />
         <ProfileSkills />
         <ProfileInterests />
+        <ProfileProjects />
       </div>
     </div>
   );

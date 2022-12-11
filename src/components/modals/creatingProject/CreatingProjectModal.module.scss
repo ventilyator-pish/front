@@ -1,0 +1,29 @@
+.body{
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.input{
+  box-shadow: none !important;
+}
+textarea.input{
+  resize: none;
+  height: 200px;
+}
+
+.label{
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  color: #14142B;
+}
+
+.createBtn{
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  border: none !important;
+}
+

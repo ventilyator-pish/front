@@ -11,6 +11,8 @@ import { useStore } from 'effector-react';
 import CompanyCard from '@components/cards/companyCard/CompanyCard';
 import ProfileInfo from '@components/profile/profileInfo/ProfileInfo';
 import ProjectsFromCompany from "@components/company/projectsFromCompany/ProjectsFromCompany";
+import CreatingProjectModal from "@components/modals/creatingProject/CreatingProjectModal";
+import {$modals} from "@store/modal/modalStore";
 
 const Company = () => {
   const { id } = useParams();
@@ -23,13 +25,13 @@ const Company = () => {
   }, [id]);
   return (
     <>
+      <CreatingProjectModal />
       {company && (
         <div className={styles.wrapper}>
           <CompanyCard company={company} />
           <div className={styles.aboutCompany}>
             <ProfileInfo type={'company'} />
             <ProjectsFromCompany />
-
           </div>
         </div>
       )}

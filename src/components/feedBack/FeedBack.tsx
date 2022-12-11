@@ -1,27 +1,29 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './FeedBack.module.scss';
 import avatar from '@assets/mock/mockPhoto.jpg';
-import {$reviews, addReview, getReviews} from "@store/reviews/reviewsStore";
-import {useStore} from "effector-react";
-import {Review} from "@src/utils/api/types/main";
-import {useNavigate} from "react-router-dom";
-import {COMPANY} from "@src/routes/routes";
+import { $reviews, addReview, getReviews } from '@store/reviews/reviewsStore';
+import { useStore } from 'effector-react';
+import { Review } from '@src/utils/api/types/main';
+import { useNavigate } from 'react-router-dom';
+import { COMPANY } from '@src/routes/routes';
 import { $me } from '@store/me/meStore';
-import send from '@assets/mock/send.png'
-
+import send from '@assets/mock/send.png';
 
 interface CommentProps {
-  review: Review
+  review: Review;
 }
-const Comment: FC<CommentProps> = ({review}) => {
-  const navigate = useNavigate()
+
+const Comment: FC<CommentProps> = ({ review }) => {
+  const navigate = useNavigate();
   return (
     <div className={styles.commentWrapperOutside}>
       <div className={styles.imgWrapper}>
         <img src={avatar} alt="avatar" />
       </div>
       <div className={styles.commentWrapper}>
-        <div className={styles.whoWrote} onClick={() => navigate(COMPANY + review.company.id)}>{review.company.name}</div>
+        <div className={styles.whoWrote} onClick={() => navigate(COMPANY + review.company.id)}>
+          {review.company.name}
+        </div>
         <div className={styles.comment}>{review.review}</div>
       </div>
     </div>
@@ -31,9 +33,10 @@ const Comment: FC<CommentProps> = ({review}) => {
 interface FeedBackProps {
   studentId: string | undefined;
 }
-const FeedBack: FC<FeedBackProps> = ({studentId}) => {
-  const me = useStore($me)
-  const reviews = useStore($reviews)
+
+const FeedBack: FC<FeedBackProps> = ({ studentId }) => {
+  const me = useStore($me);
+  const reviews = useStore($reviews);
   const [text, setText] = useState<string>(``);
 
   const handleInputValue = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,22 +45,23 @@ const FeedBack: FC<FeedBackProps> = ({studentId}) => {
 
   const handleReviewSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(!studentId) {
+    if (!studentId) {
       return false;
     }
 
-    addReview({student_id: studentId, text: text}).then(() => getReviews(studentId));
-    setText(``)
+    addReview({ student_id: studentId, text: text })
+      .then(() => getReviews(studentId))
+    setText(``);
     return false;
   };
 
   useEffect(() => {
     if (studentId) {
-      getReviews(studentId)
+      getReviews(studentId);
     }
-  }, [studentId])
+  }, [studentId]);
 
-  console.log(me?.company)
+  console.log(me?.company);
 
   return (
     <div>
@@ -74,13 +78,12 @@ const FeedBack: FC<FeedBackProps> = ({studentId}) => {
           <form onSubmit={handleReviewSubmit} className={styles.form}>
             <input type="text" onChange={handleInputValue} value={text} />
             <button type="submit">
-              <img src={send} alt=""/>
+              <img src={send} alt="" />
             </button>
           </form>
         </div>
       )}
     </div>
-
   );
 };
 

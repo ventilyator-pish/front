@@ -38,6 +38,12 @@ export type Tag = {
     color: string;
 }
 
+export type CreatingProjectType = {
+    file: string;
+    name: string;
+    description: string;
+}
+
 export type Company = {
     id: number;
     name: string;

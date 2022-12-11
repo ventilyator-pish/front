@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {FC, useCallback, useState} from 'react';
 import {$modals, resetShowModal} from "@store/modal/modalStore";
 import {Button, Modal} from "react-bootstrap";
 import styles from "@components/modals/creatingProject/CreatingProjectModal.module.scss";
@@ -7,8 +7,13 @@ import {useStore} from "effector-react";
 import {useParams} from "react-router-dom";
 import {http} from "@server/http";
 import {urls} from "@server/urls";
+import {CrowdFounding} from "@src/utils/api/types/main";
 
-const FinancingModal = () => {
+interface FinancingModalProps {
+  crowdfunding?: CrowdFounding
+}
+
+const FinancingModal: FC<FinancingModalProps> = ({crowdfunding}) => {
   const {id} = useParams()
   const modal = useStore($modals);
   const [sum, setSum] = useState<string>('')
@@ -17,21 +22,31 @@ const FinancingModal = () => {
   }
 
   const sendRequest = useCallback(async () => {
-    await http.post(urls.crowdfounding(), {goal: sum, project_id: id})
-      .finally(() => {
-        setSum('')
-        resetShowModal()
-      })
+    if (modal.isShowFinancingProjectModal) {
+      await http.post(urls.crowdfounding(), {goal: sum, project_id: id})
+        .finally(() => {
+          setSum('')
+          resetShowModal()
+        })
+    } else if (modal.isShowSupportingProjectModal && crowdfunding) {
+      await http.post(urls.projectByIdDonate(crowdfunding.project.id), {amount: +sum})
+        .finally(() => {
+          setSum('')
+          resetShowModal()
+        })
+    }
+
 
   }, [sum, id])
   return (
-    <Modal show={modal.isShowFinancingProjectModal} size="lg" centered onHide={resetShowModal}>
+    <Modal show={modal.isShowFinancingProjectModal || modal.isShowSupportingProjectModal} size="lg" centered
+           onHide={resetShowModal} onClick={(e: any) => e.stopPropagation()}>
       <Modal.Header closeButton>
         <Modal.Title>Финансирование проекта</Modal.Title>
       </Modal.Header>
       <Modal.Body className={styles.body}>
         <CustomInputWithLabel
-          label={'Введите сумму для финансирования'}
+          label={modal.isShowFinancingProjectModal ? 'Введите сумму для финансирования' : "Введите сумму для поддержки"}
           name={'description'}
           value={sum}
           onChange={handleSum}
@@ -41,7 +56,10 @@ const FinancingModal = () => {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={sendRequest} className={styles.createBtn}>
-          Запросить финансирование
+          {
+            modal.isShowFinancingProjectModal ? 'Запросить финансирование' : "Поддержать"
+          }
+
         </Button>
       </Modal.Footer>
     </Modal>

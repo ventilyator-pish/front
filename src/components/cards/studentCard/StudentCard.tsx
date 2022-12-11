@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, {FC, MouseEventHandler, useCallback, useEffect, useState} from 'react';
 import styles from './StudentCard.module.scss';
 import { IStudent } from '@lib/types/cards/cards';
 import { Button, Form } from 'react-bootstrap';
@@ -11,6 +11,7 @@ import noPhoto from '@assets/mock/noImage.png';
 import { STUDENT } from '@src/routes/routes';
 import cn from 'classnames';
 import { $profile, showFeedBack } from '@store/profile/profile';
+import {ButtonClickEvent} from "plotly.js";
 
 interface StudentCardProps {
   role: 'redactor' | 'viewer';
@@ -41,7 +42,8 @@ export const StudentCard: FC<StudentCardProps> = ({
     last_name,
   } = student;
   const profile = useStore($profile);
-  const handleFeedback = () => {
+  const handleFeedback = (e: any) => {
+    e.stopPropagation()
     showFeedBack();
   };
   const [infoValue, setInfo] = useState('');

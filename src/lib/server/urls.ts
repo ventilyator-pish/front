@@ -6,6 +6,7 @@ export const urls = {
     studentById: (id: string) => `/api/profiles/${id}/`,
     projects: () => '/api/projects/',
     projectById: (id: string) => `/api/projects/${id}/`,
+    projectByIdDonate: (id: number) => `/api/projects/${id}/donate/`,
     tags: (keyword: string) => `/api/tags/?keyword=${keyword}`,
     filterStudents: (tagsIds: string) => `/api/profiles?tags=${tagsIds}`,
     reviews: (id: string) => `/api/reviews/?student=${id}`,
@@ -15,4 +16,5 @@ export const urls = {
     makeRequest: (id: number) => `/api/projects/${id}/request/`,
     decideRequest: (id: number) => `/api/student_requests/${id}/make_response/`,
     crowdfounding: () => '/api/crowdfounding/',
+    crowdfoundingById: (id: string) => `/api/crowdfounding/${id}/`,
 }

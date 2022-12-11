@@ -1,0 +1,97 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.imgWrapper {
+  .img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+  }
+}
+
+.count {
+  display: flex;
+  column-gap: 7px;
+  & .preCount {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    color: #FFFFFF;
+  }
+
+  & .countInput {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+    color: #FFFFFF;
+    padding: 0;
+  }
+}
+
+.collectedWrapper{
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+
+  & .collectedText{
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    color: #FFFFFF;
+  }
+  & .scale{
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 32px;
+    height: 30px;
+    & .scaleCollected{
+      background: #3FCC71;
+      border-radius: 32px;
+      height: 100%;
+    }
+  }
+  .collected{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
+    color: #FFFFFF;
+  }
+}
+
+.closeFinancingBtn{
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  background: #CCCCCC !important;
+  border-radius: 32px;
+  padding: 15px;
+  width: 100%;
+  border: none !important;
+}
+
+.supportBtn{
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  background: #FFFFFF !important;
+  border-radius: 32px;
+  border: none !important;
+  padding: 15px 20px;
+}

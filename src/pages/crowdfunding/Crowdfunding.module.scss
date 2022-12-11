@@ -1,0 +1,60 @@
+.changerWrapper{
+  display: flex;
+  column-gap: 40px;
+  padding-top: 50px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.separator{
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 140%;
+  color: #FFFFFF;
+
+}
+.changer{
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 140%;
+  color: rgba(159, 255, 193, 0.47) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.changerActive{
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 140%;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+}
+.financingWrapper{
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.chooseProjectBtn{
+  font-weight: 600;
+  font-size: 24px;
+  padding: 0 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.75px;
+  color: #14142B !important;
+  background: #FFFFFF !important;
+  border-radius: 32px;
+  height: 50px;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.cards{
+  margin-top: 60px;
+  gap: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 270px));
+  grid-template-rows: auto;
+}

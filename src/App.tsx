@@ -3,7 +3,7 @@ import './App.scss'
 import {Outlet, Route, Routes, useLocation} from "react-router-dom";
 import {
     AUTH,
-    COMPANY,
+    COMPANY, CROWDFUNDING,
     FEEDBACK,
     MY_PROFILE,
     PROFILE,
@@ -23,6 +23,7 @@ import {useEffect} from "react";
 import {$me, getMeFx} from "@store/me/meStore";
 import {useStore} from "effector-react";
 import {$isAuth, checkLocalAuth} from "@store/auth/authStore";
+import Crowdfunding from "@pages/crowdfunding/Crowdfunding";
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
                     <Route path={`${PROJECT}:id`} element={<Project/>}/>
                     <Route path={MY_PROFILE} element={<MyProfile/>}/>
                     <Route path={`${COMPANY}:id`} element={<Company/>}/>
+                    <Route path={CROWDFUNDING} element={<Crowdfunding />}/>
                     <Route path={AUTH} element={<Auth/>}/>
                 </Route>
             </Routes>
